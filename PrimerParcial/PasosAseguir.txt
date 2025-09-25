@@ -1,0 +1,4 @@
+﻿--- Lista de Pasos a Seguir de Manera Correcta ---
+
+1) Recuperar Proyecto Proporcionado por docente y aplicar el gitignore pasado.
+2) Crear Base de Datos RecetasOficial
