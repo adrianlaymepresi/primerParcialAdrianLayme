@@ -6,4 +6,5 @@
 4) Implementar el modelo Recipe en funcion a la migracion y las relaciones correspondientes con los modelos
 5) Modificar el DbContext para agregar las respectivas correciones para garantizar el funcionamiento correcto en cuanto a la logica de negocio. Corregir pequeños detalles en los modelos identificados para evitar errores posteriormente.
 6) Realizar la migracion y actualizar mi base de datos RecetasOficial. Se uso comandos Add-Migration inicialOficial y Update-Database. Pero se identifico el error de la Default_Connection y deberia ser DefaultConnection. Asi que se volvio a hacer el Update-Database.
-7) Realizar Scaffolding para los controllers en este orden Category, Ingridient, Recipe
+7) Realizar Scaffolding para los controllers en este orden Category, Ingridient, Recipe. Ha funcionado correctamente la aplicacion accediento por la URL manualmente a las vistas a su index.
+8) Agregar rutas para los 3 apartados Category, Ingridient, Recipe a sus index respectivos en el _Layout.cshtml
