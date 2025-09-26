@@ -22,17 +22,62 @@ namespace PrimerParcial.Data
         // pero es buena práctica para claridad, especialmente en relaciones complejas.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configura la relación uno a muchos entre Recipe e Ingredient
-            modelBuilder.Entity<Ingredient>()
-                .HasOne(i => i.Recipe) // Un ingrediente tiene una receta
-                .WithMany(r => r.Ingredients) // Una receta tiene muchos ingredientes
-                .HasForeignKey(i => i.RecipeId); // Usa RecipeId como clave foránea
+            // Category
+            modelBuilder.Entity<Category>()
+                .Property(c => c.Name)
+                .HasMaxLength(50)
+                .IsRequired();
 
-            // Configura la relación uno a muchos entre Category y Recipe
+            modelBuilder.Entity<Category>()
+                .Property(c => c.Description)
+                .IsRequired();
+
+            // Recipe
             modelBuilder.Entity<Recipe>()
-                .HasOne(r => r.Category) // Una receta tiene una categoría
-                .WithMany(c => c.Recipes) // Una categoría tiene muchas recetas
-                .HasForeignKey(r => r.CategoryId); // Usa CategoryId como clave foránea
+                .Property(r => r.Title)
+                .HasMaxLength(100) 
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.Description)
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.PreparationTimeMinutes)
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.Servings)
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.Instructions)
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.DateCreated)
+                .IsRequired();
+
+            modelBuilder.Entity<Recipe>()
+                .HasOne(r => r.Category)  
+                .WithMany(c => c.Recipes)  
+                .HasForeignKey(r => r.CategoryId) 
+                .OnDelete(DeleteBehavior.Cascade); 
+
+            // Ingredient
+            modelBuilder.Entity<Ingredient>()
+                .Property(i => i.Name)
+                .IsRequired();
+
+            modelBuilder.Entity<Ingredient>()
+                .Property(i => i.Quantity)
+                .IsRequired();
+
+            modelBuilder.Entity<Ingredient>()
+                .HasOne(i => i.Recipe) 
+                .WithMany(r => r.Ingredients) 
+                .HasForeignKey(i => i.RecipeId) 
+                .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }

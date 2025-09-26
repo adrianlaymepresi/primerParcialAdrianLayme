@@ -19,6 +19,6 @@ namespace PrimerParcial.Models
         public int RecipeId { get; set; }
 
         // Propiedad de Navegación: El lado 'uno'
-        public Recipe Recipes { get; set; }
+        public Recipe? Recipe { get; set; }
     }
 }
